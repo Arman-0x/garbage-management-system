@@ -15,12 +15,12 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/garbage-management', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/garbage-management', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.log('MongoDB Error:', err));
-
+  
 // User Schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
