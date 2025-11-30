@@ -1,4 +1,4 @@
-const API_URL = window.location.origin + '/api';
+const API_URL = "https://garbage-management-system-zw6z.onrender.com/api";
 let token = localStorage.getItem('token');
 let currentUser = null;
 
