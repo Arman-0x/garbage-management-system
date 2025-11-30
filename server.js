@@ -6,8 +6,8 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
-const JWT_SECRET = 'your-secret-key-change-this-in-production';
+const PORT = process.env.PORT || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
 // Middleware
 app.use(cors());
@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/garbage-m
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.log('MongoDB Error:', err));
-  
+
 // User Schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
